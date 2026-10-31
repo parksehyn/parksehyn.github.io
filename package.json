@@ -1,0 +1,12 @@
+{
+  "name": "parksehyn.github.io",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "preview": "node src/build.mjs && npx --yes serve dist"
+  },
+  "dependencies": {
+    "yaml": "2.5.1"
+  }
+}

@@ -1,0 +1,190 @@
+# 이력서 데이터 — 이 파일만 고치면 사이트가 다시 만들어집니다.
+# 값이 비어 있는 항목은 화면에 나타나지 않습니다.
+# 굵게 표시하고 싶은 부분은 **이렇게** 감싸세요.
+
+profile:
+  name: 박세현
+  role: Backend · Infra Engineer
+  photo: assets/photo.jpg
+  contacts:
+    - label: Email
+      value: shpark@publicai.co.kr
+      href: mailto:shpark@publicai.co.kr
+    - label: GitHub
+      value: github.com/parksehyn
+      href: https://github.com/parksehyn
+    - label: Blog
+      value:
+      href:
+  intro:
+    - 백엔드 서비스와 그 아래의 배포·운영 환경을 함께 다루는 개발자입니다.
+    - 교내 SOLID Cloud 유지보수를 맡으며 인프라 운영에 관심을 갖게 되었고, Backend · DevOps · SRE 직무를 목표로 하고 있습니다.
+    - 컨테이너, CI/CD, 보안 게이트, 관측성처럼 서비스가 멈추지 않고 돌아가게 하는 일에 관심이 많습니다.
+
+education:
+  - title: 단국대학교
+    period: ""
+    sub: ""
+    notes:
+      - 운영체제 · 네트워크 · 데이터베이스 A+
+
+awards:
+  - kind: 수상
+    title: 2026 AI·SW중심대학 디지털 경진대회 최우수상
+    sub: 모찌
+    date: ""
+  - kind: 수상
+    title: TABA 우수교육생
+    sub: ""
+    date: ""
+  - kind: 자격증
+    title: SQLD
+    sub: 한국데이터산업진흥원
+    date: ""
+
+activities:
+  - title: 2026 ASIASIM International Summer School
+    period: 2026.07.12 – 07.25
+    sub: 베이항대학교 항저우 국제캠퍼스
+    notes:
+      - 시뮬레이션 관련 교육 수강 및 관련 프로젝트 진행
+  - title: TABA
+    period: ""
+    sub: 네트워크 · 운영체제 · SQL 기초 교육 과정
+    notes:
+      - 종합설계 프로젝트 백엔드 팀장
+      - 우수교육생 선정
+  - title: 교내 SW EXPERT
+    period: ""
+    sub: ""
+    notes:
+      - 교내 SOLID Cloud 유지보수
+
+skills:
+  - group: Backend
+    items: [Python, FastAPI, Java, Spring Boot, Spring Batch]
+    note: 모찌 백엔드, 지금참여 추천 배치
+  - group: Database
+    items: [PostgreSQL, pgvector, SQL]
+    note: 벡터 유사도 기반 추천, SQLD
+  - group: Infra · CI/CD
+    items: [Docker, GitHub Actions, Jenkins]
+    note: CVE 검사로 병합·배포를 막는 CI 게이트, Docker 기반 개발 환경 통일
+  - group: Observability
+    items: [OpenTelemetry, Grafana]
+    note: 모찌 지표 15개 · 알림 8개 구성
+  - group: AI
+    items: [ReAct Agent, SSE]
+    note: 에이전트 응답 스트리밍, 에이전트 실행 추적
+
+experience:
+  - company: 퍼블릭에이아이
+    period: 2026.09 – 재직 중
+    role: 기술개발팀 · 연구원 (R&D 인턴)
+    summary: 전남 지역 AI 전환 지원 사업의 통합 서비스 포털 구축. 여러 기관이 함께 쓰는 AI 인프라와 도메인별 AI 서비스를 하나의 포털에서 제공합니다.
+    tech: [GitHub Actions]
+    groups:
+      - title: 통합 포털 백엔드
+        items:
+          - 사업 구조와 포털 서비스 구성을 파악한 뒤 백엔드 API 요구사항 분석
+          - 활용 사례 게시판 API 설계·구현 (카테고리 다중 선택, 공개 조회 · 관리자 API 분리)
+      - title: CI 보안 게이트
+        items:
+          - GitHub Actions CI에 CVE 취약점 탐지를 추가하고, 취약점이 발견되면 병합을 차단하는 절차 적용
+
+projects:
+  - slug: mochi
+    title: 모찌
+    icon: assets/mochi-icon.png
+    period: 2026.06 – 2026.08
+    meta: [팀 3인, 백엔드, 2026 AI·SW중심대학 디지털 경진대회 최우수상]
+    summary: 스크린샷 · 링크 · 기록을 맡아두고 필요할 때 먼저 떠올려주는 기억 에이전트 앱.
+    tech: [FastAPI, OpenTelemetry, Grafana, iOS]
+    highlights:
+      - OpenTelemetry · Grafana 관측성 구축 후 분석 워커 병목을 분리해 분석 완료 시간 **80.6초 → 20.5초 (약 75% 단축)**
+      - 에이전트 실행마다 agent_runs, 도구 호출마다 tool_calls를 남기는 실행 추적 구현
+    links:
+      - label: GitHub
+        href: https://github.com/dku-mochi/mochi
+      - label: 소개 · 시연
+        href: https://wistful-money-4a2.notion.site/MOCHI-3a12399d842480eba697fda9f7e66e50
+    images:
+      - src: assets/mochi-overview.jpg
+        caption: 저장한 기록을 카테고리로 정리하고, 마감처럼 놓치기 쉬운 순간을 먼저 알려줍니다.
+      - src: assets/mochi-analysis-agent.jpg
+        caption: Analysis Agent 처리 흐름. 실행·도구 로그(agent_runs · tool_calls)를 별도 저장소에 기록합니다.
+    details:
+      - title: 관측성 구축과 분석 워커 병목 개선
+        problem: 처리 단계별 상태를 볼 수 없어 지연 원인을 파악하기 어려웠습니다.
+        solution:
+          - OpenTelemetry로 처리 단계와 외부 호출을 계측하고, 큐 대기 시간 · 첫 응답 시간 · 워커 포화도 등 15개 지표와 트레이스를 Grafana로 구성, 알림 규칙 8개 설정
+          - 지표로 분석 워커가 후속 LLM 호출(리콜 알림 설계)을 기다리는 동안 슬롯을 붙잡고 있는 것을 확인하고, 해당 단계를 동시성이 제한된 별도 풀로 분리
+        result: 15초 지연 주입 · 동시 캡처 10건 조건에서 전체 분석 완료 시간 **80.6초 → 20.5초 (약 75% 단축)**
+      - title: 에이전트 실행 추적
+        problem: ""
+        solution:
+          - 에이전트 실행마다 agent_runs, 도구 호출마다 tool_calls를 기록하는 실행 추적 구현
+        result: ""
+
+  - slug: gagyeol
+    title: 가결
+    period: ""
+    meta: [캡스톤, 인프라 · 백엔드]
+    summary: 캡스톤 프로젝트의 개발 환경과 배포 파이프라인.
+    tech: [Docker, GitHub Actions]
+    highlights:
+      - Docker로 팀원 간 개발 환경 통일
+      - 정적 검사 · 테스트 · CVE 검사가 하나라도 실패하면 배포를 막는 CI 구성
+    links:
+      - label: GitHub
+        href: https://github.com/parksehyn/GAGYEOL_BACKEND
+    details:
+      - title: 개발 환경과 CI 파이프라인
+        problem: ""
+        solution:
+          - Docker로 팀원 간 개발 환경 통일
+          - GitHub Actions CI에 정적 검사, 테스트, CVE 취약점 검사를 묶고 하나라도 실패하면 배포가 막히도록 구성
+        result: ""
+
+  - slug: jigeum
+    title: 지금참여
+    period: ""
+    meta: [팀 프로젝트, 백엔드 · AI]
+    summary: AI 기반 맞춤형 정책 · 청원 추천 서비스. 오픈소스SW기초 수업 프로젝트.
+    tech: [Spring Boot, Spring Batch, pgvector, EXAONE, SSE]
+    highlights:
+      - pgvector 코사인 유사도 기반 추천과 마감 임박도 재정렬
+      - 로컬 EXAONE 모델로 구동한 ReAct 에이전트 응답을 SSE로 스트리밍
+    links: []
+    details:
+      - title: 추천과 에이전트 응답
+        problem: ""
+        solution:
+          - Spring Batch로 데이터 수집 · 처리, pgvector 코사인 유사도 기반 추천과 마감 임박도 재정렬
+          - Planner-Executor 구조의 ReAct 에이전트를 로컬 EXAONE 모델로 구동하고, 응답을 SSE로 스트리밍
+        result: ""
+
+  - slug: danspec
+    title: DANSPEC
+    period: ""
+    meta: [서버 아키텍처 · CI/CD]
+    summary: ""
+    tech: [Docker, Jenkins]
+    highlights:
+      - 서버 아키텍처 설계, Docker + Jenkins 기반 CI/CD 환경 구축
+    links:
+      - label: GitHub
+        href: https://github.com/parksehyn/DANSPEC_BACKEND
+    details: []
+
+  - slug: slink
+    title: Slink
+    period: ""
+    meta: [개인 프로젝트]
+    summary: 교내 SOLID Cloud를 다루는 개인 프로젝트.
+    tech: []
+    highlights: []
+    links:
+      - label: GitHub
+        href: https://github.com/parksehyn/slink
+    details: []
