@@ -135,17 +135,31 @@ projects:
   - slug: gagyeol
     title: 가결
     period: ""
-    meta: [캡스톤, 인프라 · 백엔드]
-    summary: 캡스톤 프로젝트의 개발 환경과 배포 파이프라인.
-    tech: [Docker, GitHub Actions]
+    meta: [캡스톤, 백엔드 · 인프라]
+    summary: 지출결의서 AI 자동화 시스템. 규정 문서와 영수증을 읽어 양식지를 채우고 다단계 결재까지 처리합니다.
+    tech: [Spring Boot, PostgreSQL, pgvector, PDFBox, Apache POI, OpenAI, Upstage IE, Docker]
     highlights:
-      - Docker로 팀원 간 개발 환경 통일
-      - 정적 검사 · 테스트 · CVE 검사가 하나라도 실패하면 배포를 막는 CI 구성
+      - 문서 **파싱 → 청킹 → 임베딩 → 검색 → 추출**로 이어지는 문서 처리 파이프라인 전반 구축
+      - 스캔 PDF는 페이지 이미지로 바꿔 Vision 모델로 읽고, 영수증 필드는 JSON Schema로 추출해 DOCX · XLSX 양식에 자동 기입
     links:
       - label: GitHub
         href: https://github.com/parksehyn/GAGYEOL_BACKEND
     details:
-      - title: 개발 환경과 CI 파이프라인
+      - title: 규정 문서 파싱과 청킹 (RAG 인덱싱)
+        problem: 동아리 · 조직마다 회계 규정이 텍스트 PDF, 스캔 PDF, 엑셀 등 서로 다른 형식으로 되어 있어 그대로는 검색할 수 없었습니다.
+        solution:
+          - PDF는 PDFBox로 텍스트를 추출하고, 텍스트가 거의 없으면 스캔본으로 판단해 페이지를 150 DPI 이미지로 렌더링한 뒤 GPT-4o Vision으로 읽도록 분기
+          - 엑셀은 Apache POI로 시트 텍스트를 추출하고, DOCX 양식은 세로 병합 셀의 레이블을 이어받도록 처리
+          - 추출한 텍스트를 500자 단위 · 100자 겹침으로 청킹하고 text-embedding-3-small로 임베딩해 PostgreSQL pgvector에 저장
+        result: ""
+      - title: 검색과 필드 추출 · 양식 자동 기입
+        problem: 영수증 · 거래명세서마다 형식이 달라 결제 정보를 양식지에 일일이 옮겨 적어야 했습니다.
+        solution:
+          - Upstage Information Extract에 JSON Schema를 넘겨 결제 수단(카드 · 현금)을 분류하고 양식에 필요한 필드만 추출
+          - pgvector 코사인 거리로 관련 규정 청크 Top-5를 검색해, 증빙 내용과 함께 GPT가 맞는 양식지를 고르도록 구성
+          - 추출한 값을 DOCX · XLSX 양식에 매핑 (셀 레이블 매칭, 이미지 삽입, 수입지출관리대장의 다중 행 기입과 합계 수식 확장)
+        result: ""
+      - title: 개발 환경과 CI
         problem: ""
         solution:
           - Docker로 팀원 간 개발 환경 통일
