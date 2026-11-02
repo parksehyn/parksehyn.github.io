@@ -138,14 +138,21 @@ const skills = () =>
     .join('');
 
 // 경력: 왼쪽 회사 · 기간 · 직위, 오른쪽 참여 프로젝트별 블록
-const expProject = (p) => `<div class="xproj">
-  ${has(p.tags) ? `<p class="xtags">${list(p.tags).map((t) => `<span>${esc(t)}</span>`).join('')}</p>` : ''}
-  <h3>${esc(p.title)}</h3>
+const xtags = (tags) => (has(tags) ? `<p class="xtags">${list(tags).map((t) => `<span>${esc(t)}</span>`).join('')}</p>` : '');
+const expHasDetail = (p) => has(p.slug) && hasDetail(p);
+const expProject = (p) => {
+  const href = expHasDetail(p) ? `work/${esc(p.slug)}/` : '';
+  return `<div class="xproj">
+  ${xtags(p.tags)}
+  <h3>${href ? `<a class="plain" href="${href}">${esc(p.title)}</a>` : esc(p.title)}</h3>
   ${has(p.period) ? `<p class="meta">${esc(p.period)}</p>` : ''}
   ${has(p.role) ? `<p class="sub">${md(p.role)}</p>` : ''}
   ${chips(p.tech)}
-  ${bullets(p.items)}
+  ${bullets(p.highlights || p.items)}
+  ${href ? `<p class="links"><a href="${href}">자세히 보기 →</a></p>` : ''}
 </div>`;
+};
+const expProjects = () => list(data.experience).flatMap((x) => list(x.projects).map((p) => ({ ...p, company: x.company })));
 
 const experience = () =>
   list(data.experience)
@@ -186,8 +193,8 @@ const index = page({
 });
 
 /* ---------- project detail ---------- */
-function detailPage(p) {
-  const meta = [p.period, ...list(p.meta)].filter(has);
+function detailPage(p, back = '#projects') {
+  const meta = [p.company, p.period, ...list(p.meta)].filter(has);
   const blocks = list(p.details)
     .map((d) => {
       const parts = [
@@ -205,8 +212,9 @@ function detailPage(p) {
     title: `${p.title} | ${data.profile.name}`,
     description: p.summary || '',
     depth: 2,
-    body: `<p class="back"><a href="../../#projects">← ${esc(data.profile.name)}</a></p>
+    body: `<p class="back"><a href="../../${back}">← ${esc(data.profile.name)}</a></p>
 <header class="phead">
+  ${xtags(p.tags)}
   <h1 class="ptitle big">${has(p.icon) ? `<img class="picon" src="../../${esc(p.icon)}" alt="" width="40" height="40">` : ''}${esc(p.title)}</h1>
   ${meta.length ? `<p class="meta">${join_(meta, ' | ')}</p>` : ''}
   ${has(p.summary) ? `<p class="summary">${md(p.summary)}</p>` : ''}
@@ -225,6 +233,10 @@ writeFileSync(join(out, 'index.html'), index);
 for (const p of projects.filter(hasDetail)) {
   mkdirSync(join(out, 'projects', p.slug), { recursive: true });
   writeFileSync(join(out, 'projects', p.slug, 'index.html'), detailPage(p));
+}
+for (const p of expProjects().filter(expHasDetail)) {
+  mkdirSync(join(out, 'work', p.slug), { recursive: true });
+  writeFileSync(join(out, 'work', p.slug, 'index.html'), detailPage(p, '#experience'));
 }
 if (existsSync(join(root, 'assets'))) cpSync(join(root, 'assets'), join(out, 'assets'), { recursive: true });
 writeFileSync(join(out, '.nojekyll'), '');

@@ -81,6 +81,8 @@ h4 { margin-top: 18px; font-size: 14.5px; font-weight: 600; }
 .xtags span::before { content: "["; }
 .xtags span::after { content: "]"; }
 .xproj .meta { margin-top: 2px; }
+a.plain { border: 0; }
+.phead .xtags { margin-bottom: 8px; }
 .awards .sub-inline { color: var(--ink-3); font-size: 14px; margin-left: 6px; }
 .awards .when { color: var(--ink-3); font-size: 14px; font-variant-numeric: tabular-nums; }
 
