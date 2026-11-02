@@ -68,9 +68,17 @@ h4 { margin-top: 18px; font-size: 14.5px; font-weight: 600; }
 .row-body > .chips:first-child { margin-top: 0; }
 
 .awards { list-style: none; padding: 0; }
-.awards li { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 16px; padding-block: 10px; border-top: 1px solid var(--line); align-items: baseline; }
+.awards li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding-block: 10px; border-top: 1px solid var(--line); align-items: baseline; }
 .awards li:first-child { border-top: 0; padding-top: 0; }
-.awards .kind { color: var(--ink-3); font-size: 14px; }
+
+/* 경력: 회사 아래 직위, 오른쪽은 프로젝트 블록 */
+.row-meta .xrole { display: block; margin-top: 6px; color: var(--ink-2); font-size: 13.5px; line-height: 1.5; }
+.xproj + .xproj { margin-top: 22px; padding-top: 22px; border-top: 1px dashed var(--line); }
+.xtags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+.xtags span { font-size: 12.5px; color: var(--ink-3); }
+.xtags span::before { content: "["; }
+.xtags span::after { content: "]"; }
+.xproj .meta { margin-top: 2px; }
 .awards .sub-inline { color: var(--ink-3); font-size: 14px; margin-left: 6px; }
 .awards .when { color: var(--ink-3); font-size: 14px; font-variant-numeric: tabular-nums; }
 
@@ -111,8 +119,7 @@ figcaption { margin-top: 8px; color: var(--ink-3); font-size: 13.5px; }
   h1 { font-size: 28px; }
   section { margin-top: 56px; }
   .row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
-  .awards li { grid-template-columns: 56px minmax(0, 1fr); }
-  .awards .when { grid-column: 2; }
+  .awards li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .awards .when:empty { display: none; }
   .ptitle.big { font-size: 26px; }
 }

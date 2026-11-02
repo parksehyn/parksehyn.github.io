@@ -79,10 +79,11 @@ const education = () =>
     .map((e) => row(esc(e.period), `<h3>${esc(e.title)}</h3>${has(e.sub) ? `<p class="sub">${esc(e.sub)}</p>` : ''}${bullets(e.notes)}`))
     .join('');
 
-const awards = () =>
-  list(data.awards).length
-    ? `<ul class="awards">${list(data.awards)
-        .map((a) => `<li><span class="kind">${esc(a.kind)}</span><span class="what">${esc(a.title)}${has(a.sub) ? ` <span class="sub-inline">${esc(a.sub)}</span>` : ''}</span><span class="when">${esc(a.date)}</span></li>`)
+// 수상 · 자격 공용: 제목, 보조 설명(기관 등), 날짜
+const plainList = (items) =>
+  list(items).length
+    ? `<ul class="awards">${list(items)
+        .map((a) => `<li><span class="what">${esc(a.title)}${has(a.sub) ? ` <span class="sub-inline">${esc(a.sub)}</span>` : ''}</span><span class="when">${esc(a.date)}</span></li>`)
         .join('')}</ul>`
     : '';
 
@@ -96,15 +97,22 @@ const skills = () =>
     .map((s) => row(`<span class="label">${esc(s.group)}</span>`, `${chips(s.items)}${has(s.note) ? `<p class="sub">${md(s.note)}</p>` : ''}`))
     .join('');
 
+// 경력: 왼쪽 회사 · 기간 · 직위, 오른쪽 참여 프로젝트별 블록
+const expProject = (p) => `<div class="xproj">
+  ${has(p.tags) ? `<p class="xtags">${list(p.tags).map((t) => `<span>${esc(t)}</span>`).join('')}</p>` : ''}
+  <h3>${esc(p.title)}</h3>
+  ${has(p.period) ? `<p class="meta">${esc(p.period)}</p>` : ''}
+  ${has(p.role) ? `<p class="sub">${md(p.role)}</p>` : ''}
+  ${chips(p.tech)}
+  ${bullets(p.items)}
+</div>`;
+
 const experience = () =>
   list(data.experience)
     .map((x) =>
       row(
-        `<h3 class="company">${esc(x.company)}</h3><span>${esc(x.period)}</span>`,
-        `${has(x.role) ? `<h3>${esc(x.role)}</h3>` : ''}${has(x.summary) ? `<p class="sub">${md(x.summary)}</p>` : ''}${chips(x.tech)}${list(x.groups)
-          .filter((g) => has(g.items))
-          .map((g) => `<h4>${esc(g.title)}</h4>${bullets(g.items)}`)
-          .join('')}`
+        `<h3 class="company">${esc(x.company)}</h3><span>${esc(x.period)}</span>${has(x.role) ? `<span class="xrole">${esc(x.role)}</span>` : ''}`,
+        list(x.projects).map(expProject).join('')
       )
     )
     .join('');
@@ -128,7 +136,8 @@ const index = page({
   body: [
     header(),
     section('education', '학력', education()),
-    section('awards', '수상 · 자격', awards()),
+    section('awards', '수상', plainList(data.awards)),
+    section('certs', '자격', plainList(data.certs)),
     section('activities', '활동', activities()),
     section('skills', '기술', skills()),
     section('experience', '경력', experience()),

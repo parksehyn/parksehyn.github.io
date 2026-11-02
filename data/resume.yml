@@ -26,19 +26,21 @@ education:
     period: ""
     sub: ""
     notes:
-      - 운영체제 · 네트워크 · 데이터베이스 A+
+      - 학점 4.23 / 4.5
 
 awards:
-  - kind: 수상
-    title: 2026 AI·SW중심대학 디지털 경진대회 최우수상
+  - title: 2026 AI·SW중심대학 디지털 경진대회 최우수상
     sub: 모찌
     date: ""
-  - kind: 수상
-    title: TABA 우수교육생
+  - title: TABA 아카데미 10기 프로젝트 장려상
+    sub: 정보통신기획평가원
+    date: ""
+  - title: TABA 우수교육생
     sub: ""
     date: ""
-  - kind: 자격증
-    title: SQLD
+
+certs:
+  - title: SQLD
     sub: 한국데이터산업진흥원
     date: ""
 
@@ -49,48 +51,51 @@ activities:
     notes:
       - 시뮬레이션 관련 교육 수강 및 관련 프로젝트 진행
   - title: TABA
-    period: ""
+    period: 2025.09 – 2025.12
     sub: 네트워크 · 운영체제 · SQL 기초 교육 과정
     notes:
       - 종합설계 프로젝트 백엔드 팀장
       - 우수교육생 선정
   - title: 교내 SW EXPERT
-    period: ""
+    period: 2026.03 – 2026.08
     sub: ""
     notes:
       - 교내 SOLID Cloud 유지보수
 
+# 기술 이름 앞의 이모지는 자유롭게 바꿔도 됩니다.
 skills:
   - group: Backend
-    items: [Python, FastAPI, Java, Spring Boot, Spring Batch]
-    note: 모찌 백엔드, 지금참여 추천 배치
+    items: [🐍 Python, ⚡ FastAPI, ☕ Java, 🌱 Spring Boot, 📦 Spring Batch]
   - group: Database
-    items: [PostgreSQL, pgvector, SQL]
-    note: 벡터 유사도 기반 추천, SQLD
+    items: [🐘 PostgreSQL, 🧭 pgvector, 🗃️ SQL]
   - group: Infra · CI/CD
-    items: [Docker, GitHub Actions, Jenkins]
-    note: CVE 검사로 병합·배포를 막는 CI 게이트, Docker 기반 개발 환경 통일
+    items: [🐳 Docker, 🔄 GitHub Actions, 🤵 Jenkins]
   - group: Observability
-    items: [OpenTelemetry, Grafana]
-    note: 모찌 지표 15개 · 알림 8개 구성
+    items: [🔭 OpenTelemetry, 📊 Grafana]
   - group: AI
-    items: [ReAct Agent, SSE]
-    note: 에이전트 응답 스트리밍, 에이전트 실행 추적
+    items: [🤖 ReAct Agent, 📡 SSE]
 
+# 경력: 왼쪽은 회사, 오른쪽은 참여한 프로젝트별로 표시됩니다.
 experience:
   - company: 퍼블릭에이아이
     period: 2026.09 – 재직 중
     role: 기술개발팀 · 연구원 (R&D 인턴)
-    summary: 전남 지역 AI 전환 지원 사업의 통합 서비스 포털 구축. 여러 기관이 함께 쓰는 AI 인프라와 도메인별 AI 서비스를 하나의 포털에서 제공합니다.
-    tech: [GitHub Actions]
-    groups:
-      - title: 통합 포털 백엔드
+    projects:
+      - tags: [오픈플랫폼, 전남TP]
+        title: 카카오 지역주도형 AI대전환
+        period: 2026.09 – 2026.10
+        role: 통합 · 데이터포털 운영시스템 — 콘텐츠 마당 백엔드 담당
+        tech: [GitHub Actions]
         items:
           - 사업 구조와 포털 서비스 구성을 파악한 뒤 백엔드 API 요구사항 분석
           - 활용 사례 게시판 API 설계·구현 (카테고리 다중 선택, 공개 조회 · 관리자 API 분리)
-      - title: CI 보안 게이트
-        items:
           - GitHub Actions CI에 CVE 취약점 탐지를 추가하고, 취약점이 발견되면 병합을 차단하는 절차 적용
+      - tags: [기획예산처]
+        title: 데이터플랫폼 AI-ON 구축
+        period: 2026.11 – 2026.12 (참여 중)
+        role: ""
+        tech: []
+        items: []
 
 projects:
   - slug: mochi
