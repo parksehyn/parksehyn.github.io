@@ -4,6 +4,7 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync } fr
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
+import * as simpleIcons from 'simple-icons';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const out = join(root, 'dist');
@@ -92,9 +93,48 @@ const activities = () =>
     .map((a) => row(esc(a.period), `<h3>${esc(a.title)}</h3>${has(a.sub) ? `<p class="sub">${esc(a.sub)}</p>` : ''}${bullets(a.notes)}`))
     .join('');
 
+/* ---------- tech icons ---------- */
+// 기술 이름 → Simple Icons slug (+ 선택: 색 덮어쓰기). 로고가 없는 개념형 항목은 간단한 선 아이콘을 쓴다.
+const TECH_ICONS = {
+  'Python': { slug: 'python' },
+  'FastAPI': { slug: 'fastapi' },
+  'Java': { slug: 'openjdk', color: 'E76F00' },
+  'Spring Boot': { slug: 'springboot' },
+  'Spring Batch': { slug: 'spring' },
+  'PostgreSQL': { slug: 'postgresql' },
+  'pgvector': { slug: 'postgresql' },
+  'Docker': { slug: 'docker' },
+  'GitHub Actions': { slug: 'githubactions' },
+  'Jenkins': { slug: 'jenkins' },
+  'OpenTelemetry': { slug: 'opentelemetry', color: 'F5A800' },
+  'Grafana': { slug: 'grafana' },
+  'SQL': { glyph: 'database' },
+  'ReAct Agent': { glyph: 'agent' },
+  'SSE': { glyph: 'stream' },
+};
+// 브랜드 로고가 없는 항목용 선 아이콘 (24x24, stroke)
+const GLYPHS = {
+  database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
+  agent: '<rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="14" r="1.2"/>',
+  stream: '<path d="M5 12a7 7 0 0 1 7-7"/><path d="M5 12a7 7 0 0 0 7 7"/><path d="M9 12a3 3 0 0 1 3-3"/><path d="M9 12a3 3 0 0 0 3 3"/><path d="M14 12h7"/><path d="M18 9l3 3-3 3"/>',
+};
+const siBySlug = new Map(Object.values(simpleIcons).filter((i) => i && i.slug).map((i) => [i.slug, i]));
+function techIcon(name) {
+  const spec = TECH_ICONS[name];
+  if (!spec) return '';
+  if (spec.glyph) return `<svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GLYPHS[spec.glyph]}</svg>`;
+  const icon = siBySlug.get(spec.slug);
+  if (!icon) return '';
+  const hex = spec.color || icon.hex;
+  const fill = hex === '000000' ? 'currentColor' : `#${hex}`;
+  return `<svg class="ti" viewBox="0 0 24 24" fill="${fill}" aria-hidden="true"><path d="${icon.path}"/></svg>`;
+}
+const techChips = (items) =>
+  has(items) ? `<ul class="chips tech">${list(items).map((t) => `<li>${techIcon(t)}${esc(t)}</li>`).join('')}</ul>` : '';
+
 const skills = () =>
   list(data.skills)
-    .map((s) => row(`<span class="label">${esc(s.group)}</span>`, `${chips(s.items)}${has(s.note) ? `<p class="sub">${md(s.note)}</p>` : ''}`))
+    .map((s) => row(`<span class="label">${esc(s.group)}</span>`, `${techChips(s.items)}${has(s.note) ? `<p class="sub">${md(s.note)}</p>` : ''}`))
     .join('');
 
 // 경력: 왼쪽 회사 · 기간 · 직위, 오른쪽 참여 프로젝트별 블록

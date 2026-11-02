@@ -23,8 +23,8 @@ profile:
 
 education:
   - title: 단국대학교
-    period: ""
-    sub: ""
+    period: 2021.03 – 2027.02
+    sub: SW융합대학 소프트웨어학과
     notes:
       - 학점 4.23 / 4.5
 
@@ -35,8 +35,8 @@ awards:
   - title: TABA 아카데미 10기 프로젝트 장려상
     sub: 정보통신기획평가원
     date: ""
-  - title: TABA 우수교육생
-    sub: ""
+  - title: TABA 아카데미 10기 우수교육생
+    sub: 정보통신기획평가원
     date: ""
 
 certs:
@@ -45,11 +45,6 @@ certs:
     date: ""
 
 activities:
-  - title: 2026 ASIASIM International Summer School
-    period: 2026.07.12 – 07.25
-    sub: 베이항대학교 항저우 국제캠퍼스
-    notes:
-      - 시뮬레이션 관련 교육 수강 및 관련 프로젝트 진행
   - title: TABA
     period: 2025.09 – 2025.12
     sub: 네트워크 · 운영체제 · SQL 기초 교육 과정
@@ -61,19 +56,25 @@ activities:
     sub: ""
     notes:
       - 교내 SOLID Cloud 유지보수
+  - title: 2026 ASIASIM International Summer School
+    period: 2026.07.12 – 07.25
+    sub: 베이항대학교 항저우 국제캠퍼스
+    notes:
+      - 시뮬레이션 관련 교육 수강 및 관련 프로젝트 진행
 
-# 기술 이름 앞의 이모지는 자유롭게 바꿔도 됩니다.
+# 기술 아이콘은 이름으로 자동으로 붙습니다 (목록: src/build.mjs 의 TECH_ICONS).
+# 목록에 없는 기술은 아이콘 없이 이름만 표시됩니다.
 skills:
   - group: Backend
-    items: [🐍 Python, ⚡ FastAPI, ☕ Java, 🌱 Spring Boot, 📦 Spring Batch]
+    items: [Python, FastAPI, Java, Spring Boot, Spring Batch]
   - group: Database
-    items: [🐘 PostgreSQL, 🧭 pgvector, 🗃️ SQL]
+    items: [PostgreSQL, pgvector, SQL]
   - group: Infra · CI/CD
-    items: [🐳 Docker, 🔄 GitHub Actions, 🤵 Jenkins]
+    items: [Docker, GitHub Actions, Jenkins]
   - group: Observability
-    items: [🔭 OpenTelemetry, 📊 Grafana]
+    items: [OpenTelemetry, Grafana]
   - group: AI
-    items: [🤖 ReAct Agent, 📡 SSE]
+    items: [ReAct Agent, SSE]
 
 # 경력: 왼쪽은 회사, 오른쪽은 참여한 프로젝트별로 표시됩니다.
 experience:
