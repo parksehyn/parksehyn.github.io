@@ -90,8 +90,8 @@ skills:
     items: [Docker, Kubernetes, GitHub Actions, Jenkins]
   - group: Observability
     items: [OpenTelemetry, Grafana]
-  - group: AI
-    items: [OpenAI API, EXAONE, BM25 하이브리드 검색]
+  - group: AI · LLM
+    items: [Gemini (Vertex AI), OpenAI API, Voyage AI, Upstage API]
 
 # 경력: 왼쪽은 회사, 오른쪽은 참여한 프로젝트별로 표시됩니다.
 experience:
@@ -168,7 +168,7 @@ projects:
     period: 2026.06 – 2026.08
     meta: [팀 3인, 백엔드, 2026 AI·SW중심대학 디지털 경진대회 최우수상]
     summary: 스크린샷·링크·기록을 맡아두고 필요할 때 먼저 떠올려주는 기억 에이전트 앱. 20·30대 53명 설문에서 92.5%가 저장한 캡처를 다시 보지 않는다는 문제에서 출발했습니다.
-    tech: [FastAPI, OpenTelemetry, Grafana, iOS]
+    tech: [FastAPI, PostgreSQL, pgvector, Gemini (Vertex AI), Voyage AI, OpenTelemetry, Grafana, iOS]
     highlights:
       - 관측성으로 분석 워커의 병목을 찾아 분리해 분석 완료 시간 **80.6초 → 20.5초 (약 75% 단축)**
       - 벡터 검색에 BM25와 리랭커를 결합해 Top-3 적중률 **59% → 87%**, 골든셋 자동 평가로 정답률 **91.3% → 95.6%**

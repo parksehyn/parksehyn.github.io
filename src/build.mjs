@@ -111,6 +111,9 @@ const TECH_ICONS = {
   'Kubernetes': { slug: 'kubernetes' },
   'SQLAlchemy': { slug: 'sqlalchemy' },
   'OpenAI API': { slug: 'openai' },
+  'Gemini (Vertex AI)': { slug: 'googlegemini' },
+  'Voyage AI': { glyph: 'vector' },
+  'Upstage API': { glyph: 'doc' },
   'EXAONE': { glyph: 'agent' },
   'BM25 하이브리드 검색': { glyph: 'search' },
   'SQL': { glyph: 'database' },
@@ -119,6 +122,8 @@ const TECH_ICONS = {
 };
 // 브랜드 로고가 없는 항목용 선 아이콘 (24x24, stroke)
 const GLYPHS = {
+  vector: '<circle cx="6" cy="17" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="17" cy="18" r="2"/><path d="M8 16l8-8"/><path d="M8 17h7"/>',
+  doc: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6"/><path d="M9 16h6"/>',
   database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
   agent: '<rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="14" r="1.2"/>',
   search: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/>',
