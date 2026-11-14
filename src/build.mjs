@@ -20,7 +20,7 @@ const md = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replac
 const join_ = (arr, sep = ' · ') => list(arr).map(esc).join(sep);
 const chips = (items) => (has(items) ? `<ul class="chips">${list(items).map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : '');
 const bullets = (items) => (has(items) ? `<ul class="bullets">${list(items).map((t) => `<li>${md(t)}</li>`).join('')}</ul>` : '');
-const section = (id, title, body) => (body.trim() ? `<section id="${id}"><h2>${esc(title)}<span class="dot">.</span></h2>${body}</section>` : '');
+const section = (id, title, body) => (body.trim() ? `<section id="${id}"><h2>${esc(title)}</h2>${body}</section>` : '');
 const row = (meta, body) => `<div class="row"><div class="row-meta">${meta}</div><div class="row-body">${body}</div></div>`;
 const extLinks = (links) =>
   has(links)
@@ -222,7 +222,7 @@ function detailPage(p, back = '#projects') {
   ${extLinks(p.links)}
 </header>
 ${figs ? `<div class="figs">${figs}</div>` : ''}
-${blocks ? `<section><h2>무엇을 했나<span class="dot">.</span></h2>${blocks}</section>` : ''}`,
+${blocks ? `<section><h2>무엇을 했나</h2>${blocks}</section>` : ''}`,
   });
 }
 

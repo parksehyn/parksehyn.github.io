@@ -30,13 +30,13 @@ education:
 
 awards:
   - title: 2026 AI·SW중심대학 디지털 경진대회 최우수상
-    sub: 모찌
+    sub: 정보통신기획평가원장상
     date: ""
   - title: TABA 아카데미 10기 프로젝트 장려상
-    sub: 정보통신기획평가원
+    sub: 정보통신기획평가원장상
     date: ""
   - title: TABA 아카데미 10기 우수교육생
-    sub: 정보통신기획평가원
+    sub: 정보통신기획평가원장상
     date: ""
 
 certs:
@@ -45,9 +45,9 @@ certs:
     date: ""
 
 activities:
-  - title: TABA
+  - title: TABA 아카데미 10기
     period: 2025.09 – 2025.12
-    sub: 네트워크 · 운영체제 · SQL 기초 교육 과정
+    sub: 빅데이터 분석·AI 처리를 위한 SW융합개발자 양성 과정 (과기정통부·정보통신기획평가원 주최, 티맥스티베로 주관)
     notes:
       - 종합설계 프로젝트 백엔드 팀장
       - 우수교육생 선정
