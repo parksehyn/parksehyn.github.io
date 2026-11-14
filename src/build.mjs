@@ -75,8 +75,8 @@ function header() {
 ${has(p.intro) ? `<div class="intro">${list(p.intro).map((t) => `<p>${md(t)}</p>`).join('')}</div>` : ''}`;
 }
 
-const education = () =>
-  list(data.education)
+const education = (items = data.education) =>
+  list(items)
     .map((e) => row(esc(e.period), `<h3>${esc(e.title)}</h3>${has(e.sub) ? `<p class="sub">${esc(e.sub)}</p>` : ''}${bullets(e.notes)}`))
     .join('');
 
@@ -108,6 +108,11 @@ const TECH_ICONS = {
   'Jenkins': { slug: 'jenkins' },
   'OpenTelemetry': { slug: 'opentelemetry', color: 'F5A800' },
   'Grafana': { slug: 'grafana' },
+  'Kubernetes': { slug: 'kubernetes' },
+  'SQLAlchemy': { slug: 'sqlalchemy' },
+  'OpenAI API': { slug: 'openai' },
+  'EXAONE': { glyph: 'agent' },
+  'BM25 하이브리드 검색': { glyph: 'search' },
   'SQL': { glyph: 'database' },
   'ReAct Agent': { glyph: 'agent' },
   'SSE': { glyph: 'stream' },
@@ -116,6 +121,7 @@ const TECH_ICONS = {
 const GLYPHS = {
   database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
   agent: '<rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="14" r="1.2"/>',
+  search: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/>',
   stream: '<path d="M5 12a7 7 0 0 1 7-7"/><path d="M5 12a7 7 0 0 0 7 7"/><path d="M9 12a3 3 0 0 1 3-3"/><path d="M9 12a3 3 0 0 0 3 3"/><path d="M14 12h7"/><path d="M18 9l3 3-3 3"/>',
 };
 const siBySlug = new Map(Object.values(simpleIcons).filter((i) => i && i.slug).map((i) => [i.slug, i]));
@@ -183,8 +189,9 @@ const index = page({
   body: [
     header(),
     section('education', '학력', education()),
+    section('military', '병역', education(data.military)),
     section('awards', '수상', plainList(data.awards)),
-    section('certs', '자격', plainList(data.certs)),
+    section('certs', '자격 · 어학', plainList(data.certs)),
     section('activities', '활동', activities()),
     section('skills', '기술', skills()),
     section('experience', '경력', experience()),
