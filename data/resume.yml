@@ -209,10 +209,10 @@ projects:
 
   - slug: gagyeol
     title: 가결
-    period: 2026.03 – 2026.06
+    period: 2026.03 – 2026.05
     meta: [캡스톤, 백엔드·인프라]
     summary: 학생회 사무부장으로 예산·증빙 서류를 관리하며 겪은 반복 작업에서 출발한 지출결의서 AI 자동화 시스템. 규정 문서와 영수증을 읽어 양식지를 채우고 다단계 결재까지 처리하며, 학생회 업무에 실제 적용했습니다.
-    tech: [Spring Boot, PostgreSQL, pgvector, PDFBox, Apache POI, OpenAI, Upstage IE, Docker]
+    tech: [Java, Spring Boot, PostgreSQL, pgvector, Flyway, PDFBox, Apache POI, OpenAI, Upstage IE, Docker]
     highlights:
       - 문서 **파싱 → 청킹 → 임베딩 → 검색 → 추출**로 이어지는 문서 처리 파이프라인 전반 구축
       - 스캔 PDF는 페이지 이미지로 바꿔 Vision 모델로 읽고, 영수증 필드는 JSON Schema로 추출해 DOCX·XLSX 양식에 자동 기입
@@ -261,12 +261,13 @@ projects:
 
   - slug: danspec
     title: DANSPEC
-    period: ""
-    meta: [서버 아키텍처·CI/CD]
-    summary: ""
-    tech: [Docker, Jenkins]
+    period: 2025.11 – 2025.12
+    meta: [TABA 아카데미 10기 종합설계, 백엔드 팀장, 프로젝트 장려상]
+    summary: 단국대 학생이 흩어진 교내외 활동 정보를 한곳에서 찾고, 대학 메일 인증을 거친 학우와 팀을 꾸릴 수 있게 돕는 활동 큐레이션·팀 매칭 서비스.
+    tech: [Java, Spring Boot, MySQL, Docker, Jenkins]
     highlights:
-      - 서버 아키텍처 설계, Docker + Jenkins 기반 CI/CD 환경 구축
+      - 교내외 활동 정보 크롤링과 이벤트 API 구현, 기능 단위(auth·events·teams 등)로 패키지를 분리한 서버 구조 설계
+      - Jenkins와 Docker를 연동해 코드 푸시부터 빌드·배포까지 자동화하는 CI/CD 파이프라인 구축
     links:
       - label: GitHub
         href: https://github.com/parksehyn/DANSPEC_BACKEND
