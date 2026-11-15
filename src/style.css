@@ -134,7 +134,9 @@ figcaption { margin-top: 8px; color: var(--ink-3); font-size: 13.5px; }
   body { font-size: 10.5pt; line-height: 1.55; }
   main.wrap { padding-block: 0; max-width: none; }
   section { margin-top: 26px; break-inside: auto; }
-  .row, .project, .detail, .awards li { break-inside: avoid; }
+  .project, .xproj, .awards li, figure, .pr li { break-inside: avoid; }
+  .row { break-inside: auto; }
+  h1, h2, h3, h4 { break-after: avoid; }
   .links, .foot, .back { display: none; }
   a { border: 0; }
 }
