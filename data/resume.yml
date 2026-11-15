@@ -91,7 +91,7 @@ skills:
   - group: Observability
     items: [OpenTelemetry, Grafana]
   - group: AI · LLM
-    items: [Gemini (Vertex AI), OpenAI API, Voyage AI, Upstage API]
+    items: [Gemini (Vertex AI), OpenAI API, Voyage AI, Upstage API, Ollama]
 
 # 경력: 왼쪽은 회사, 오른쪽은 참여한 프로젝트별로 표시됩니다.
 experience:
@@ -243,14 +243,16 @@ projects:
 
   - slug: jigeum
     title: 지금참여
-    period: 2026.03 – 2026.06
-    meta: [팀 3인, 백엔드·AI]
-    summary: AI 기반 맞춤형 정책·청원 추천 서비스. 오픈소스SW기초 수업 프로젝트.
-    tech: [Spring Boot, Spring Batch, pgvector, EXAONE, SSE]
+    period: 2026.05 – 2026.06
+    meta: [팀 3인, 팀장, 백엔드·AI]
+    summary: 국회 의안·국민동의청원·입법예고 공공데이터를 한곳에 모아, 관심사 맞춤 추천과 AI 분석·챗봇을 제공하는 정치 참여 플랫폼. 오픈소스SW기초 수업 프로젝트.
+    tech: [Java, Spring Boot, Spring Batch, PostgreSQL, pgvector, EXAONE 3.5, Ollama, SSE]
     highlights:
-      - pgvector 코사인 유사도 기반 추천과 마감 임박도 재정렬
-      - 로컬 EXAONE 모델로 구동한 ReAct 에이전트 응답을 SSE로 스트리밍
-    links: []
+      - Spring Batch로 공공데이터를 수집·임베딩하고, pgvector 코사인 유사도 기반 추천과 마감 임박도 재정렬 구현
+      - 프레임워크 없이 Planner-Executor + ReAct 에이전트를 직접 구현해 로컬 EXAONE 3.5(Ollama)로 구동, 응답을 SSE로 스트리밍
+    links:
+      - label: GitHub
+        href: https://github.com/dku-jigeum/BE
     details:
       - title: 추천과 에이전트 응답
         problem: ""

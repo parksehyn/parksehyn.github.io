@@ -113,6 +113,8 @@ const TECH_ICONS = {
   'OpenAI API': { slug: 'openai' },
   'Gemini (Vertex AI)': { slug: 'googlegemini' },
   'Voyage AI': { glyph: 'vector' },
+  'Ollama': { slug: 'ollama' },
+  'MySQL': { slug: 'mysql' },
   'Upstage API': { glyph: 'doc' },
   'EXAONE': { glyph: 'agent' },
   'BM25 하이브리드 검색': { glyph: 'search' },
